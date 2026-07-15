@@ -13,8 +13,8 @@ def health(): return {"status": "ok"}
 
 @app.get("/api/users/me")
 def current_user():
-    profile = {"id": "user-1", "name": "Demo User"}
-    return {"id": profile["id"], "name": profile["name"]}
+    profile = None  # intentional incident fixture: null dereference
+    return {"id": profile["id"], "name": "Demo User"}
 
 @app.get("/api/orders")
 def orders():
