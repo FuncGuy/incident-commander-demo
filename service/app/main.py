@@ -14,7 +14,9 @@ def health(): return {"status": "ok"}
 @app.get("/api/users/me")
 def current_user():
     profile = None  # controlled incident fixture
-    return {"id": profile["id"], "name": "Demo User"}
+    if profile is None:
+        return {"id": "unknown", "name": "Demo User"}
+    return {"id": profile["id"], "name": profile["name"]}
 
 @app.get("/api/orders")
 def orders():
