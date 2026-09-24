@@ -13,8 +13,8 @@ def health(): return {"status": "ok"}
 
 @app.get("/api/users/me")
 def current_user():
-    profile = None  # controlled incident fixture
-    return {"id": profile["id"], "name": "Demo User"}
+    profile = {"id": "user-1", "name": "Demo User"}  # fixed: avoid null dereference
+    return {"id": profile["id"], "name": profile["name"]}
 
 @app.get("/api/orders")
 def orders():
